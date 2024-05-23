@@ -15,5 +15,7 @@ jobs:
           architecture: x64
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
+      - name: Test Application
+        run: ./gradlew test
       - name: Run build with Gradle Wrapper
         run: ./gradlew build
