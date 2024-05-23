@@ -2,7 +2,7 @@ name: GitHub Actions Demo Test
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Setup-Gradle:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -15,7 +15,15 @@ jobs:
           architecture: x64
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
+  Test-Application:
+    runs-on: ubuntu-latest
+    needs: Setup-Gradle
+    steps:
       - name: Test Application
         run: ./gradlew test
+  Build:
+    runs-on: ubuntu-latest
+    needs: Test-Application
+    steps:
       - name: Run build with Gradle Wrapper
         run: ./gradlew build
