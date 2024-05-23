@@ -13,8 +13,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           architecture: x64
-      - name: Test Application
-        run: ./gradlew test
+      - run: ./gradlew test
   Build:
     runs-on: ubuntu-latest
     needs: Test
@@ -27,10 +26,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           architecture: x64
-        run: ./gradlew build
+      - run: ./gradlew build
   Deploy:
     runs-on: ubuntu-latest
     needs: Build
     steps:
-      - name: Deploy Application
-        run: echo "🖥️ The deploy application."
+      - run: echo "🖥️ The deploy application."
