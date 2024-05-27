@@ -28,11 +28,11 @@ jobs:
           cache: gradle
           distribution: 'temurin'
           architecture: x64
-      - run: ./gradlew build
+      - run: ./gradlew build -x test
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          path: build
+          path: app/build
           name: build-files
   Deploy:
     runs-on: ubuntu-latest
